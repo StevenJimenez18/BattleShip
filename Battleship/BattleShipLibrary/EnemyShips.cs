@@ -2,19 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BattleShipLibrary
 {
-    public class EnemyShips : PlayerShip
+    public class EnemyShips : IShip
     {
 
-        public static new EnemyShips warShip { get; set; }
-        public static new EnemyShips destroyer { get; set; }
-        public static new EnemyShips cruiser { get; set; }
-        public static new EnemyShips tanker { get; set; }
-        public static new EnemyShips uBoat { get; set; }
-        public static List<string> chosenLocations = new List<string>();
+        public string Name { get; set ; }
+        public List<string> Location { get; set; }
+        public bool IsDead { get; set; }
+        public int HitPoints { get; set; }
+
+        public static List<string> chosenEnemyLocations = new List<string>();
+
+        private readonly Random rand = new Random();
+
+        public static EnemyShips warShip { get; set; }
+        public static EnemyShips destroyer { get; set; }
+        public static EnemyShips cruiser { get; set; }
+        public static EnemyShips tanker { get; set; }
+        public static EnemyShips uBoat { get; set; }
+        
 
         public static void GetWarShip(EnemyShips enemyShip)
         {
@@ -41,6 +51,7 @@ namespace BattleShipLibrary
         public static void GetEnemyLocations(EnemyShips enemyship, int size)
         {
             //---used to randomize variable choices---//
+            Thread.Sleep(50);
             Random rand = new Random();
 
             //---Holds starting number---//
@@ -48,9 +59,6 @@ namespace BattleShipLibrary
 
             //---Holds starting Letter---//
             int startingLetter = 0;
-
-            //---Controls Alignment---//
-            int alignment = 1;  //rand.Next(0, 1);
             
             //---Holds the locations for the enemy ship---//        
             List<string> locations = new List<string>();
@@ -79,6 +87,9 @@ namespace BattleShipLibrary
 
             while(locations.Count < size)
             {
+                //---Decides Alignment position---//
+                int alignment = rand.Next(1, 10);
+
                 //Exception happenig here - Collection was modified enumeration operation may not execute
                 try
                 {
@@ -94,7 +105,54 @@ namespace BattleShipLibrary
                     Console.WriteLine(e.Message);
                 }
 
-                if (alignment == 1)
+                //Decides Vertical positions
+                if (alignment % 2 == 0)
+                {
+
+
+                    //---Limits the possible starting number by size of ship---//
+                    switch (size)
+                    {
+                        case 5:
+                            startingLetter = rand.Next(4, 7);
+                            startingNumber = rand.Next(1, 4);
+                            break;
+                        case 4:
+                            startingLetter = rand.Next(3, 7);
+                            startingNumber = rand.Next(1, 5);
+                            break;
+                        case 3:
+                            startingLetter = rand.Next(2, 7);
+                            startingNumber = rand.Next(1, 6);
+                            break;
+                        case 2:
+                            startingLetter = rand.Next(1, 7);
+                            startingNumber = rand.Next(1, 7);
+                            break;
+                        case 1:
+                            startingLetter = rand.Next(0, 7);
+                            startingNumber = rand.Next(1, 8);
+                            break;
+                    }
+
+                    string randLetter = AlphaList[startingLetter]; // Starting location of Letter
+                    int counter = startingNumber; //Starting Location of Number
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        sb.Append("E"); //Appends enemy tag
+                        sb.Append(AlphaList[startingLetter - i]);
+                        sb.Append(counter);
+                        if (!chosenEnemyLocations.Contains(sb.ToString()))
+                        {
+                            locations.Add(sb.ToString()); //Adds location to a temporary list
+                        }
+                        sb.Clear();
+                    }
+                }
+
+
+                if (alignment % 2 == 1)
                 {
                     //Chooses the starting letter for location
                     startingLetter = rand.Next(0, 7);
@@ -127,7 +185,7 @@ namespace BattleShipLibrary
                         sb.Append(randLetter); //Adds the chosen letter
                         sb.Append(Counter); //Adds the chosen number
                         Counter++; //Increments the next locations number
-                        if (!chosenLocations.Contains(sb.ToString()))
+                        if (!chosenEnemyLocations.Contains(sb.ToString()))
                         {
                             locations.Add(sb.ToString()); //Adds location to a temporary list
                         }
@@ -137,7 +195,7 @@ namespace BattleShipLibrary
             }
             enemyship.Location = locations; // Updates the ships location
             foreach(var l in locations)
-                chosenLocations.Add(l);
+                chosenEnemyLocations.Add(l);
         }
 
     }

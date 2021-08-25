@@ -198,13 +198,13 @@ namespace Battleship
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
-            this.txtAttackBox = new System.Windows.Forms.TextBox();
             this.btnFire = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gbAttackControls = new System.Windows.Forms.GroupBox();
+            this.txtAttackBox = new System.Windows.Forms.TextBox();
+            this.btnPlayAgain = new System.Windows.Forms.Button();
             this.lbEnemyStatus = new System.Windows.Forms.Label();
             this.lbLogo = new System.Windows.Forms.Label();
-            this.btnPlayAgain = new System.Windows.Forms.Button();
-            this.gbAttackControls = new System.Windows.Forms.GroupBox();
             this.gbMainBoard.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -219,6 +219,7 @@ namespace Battleship
             // gbMainBoard
             // 
             this.gbMainBoard.BackColor = System.Drawing.Color.Navy;
+            this.gbMainBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gbMainBoard.Controls.Add(this.groupBox4);
             this.gbMainBoard.Controls.Add(this.groupBox3);
             this.gbMainBoard.Controls.Add(this.groupBox2);
@@ -236,6 +237,7 @@ namespace Battleship
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.label19);
@@ -332,6 +334,7 @@ namespace Battleship
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label14);
@@ -428,6 +431,7 @@ namespace Battleship
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
@@ -524,6 +528,7 @@ namespace Battleship
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.lbA);
             this.groupBox1.Controls.Add(this.lbH);
             this.groupBox1.Controls.Add(this.lbG);
@@ -628,6 +633,7 @@ namespace Battleship
             // 
             // gbPlayerSpace
             // 
+            this.gbPlayerSpace.BackColor = System.Drawing.Color.Transparent;
             this.gbPlayerSpace.Controls.Add(this.button65);
             this.gbPlayerSpace.Controls.Add(this.button66);
             this.gbPlayerSpace.Controls.Add(this.button67);
@@ -1342,6 +1348,7 @@ namespace Battleship
             // 
             // gbEnemySpace
             // 
+            this.gbEnemySpace.BackColor = System.Drawing.Color.Transparent;
             this.gbEnemySpace.Controls.Add(this.button57);
             this.gbEnemySpace.Controls.Add(this.button58);
             this.gbEnemySpace.Controls.Add(this.button59);
@@ -2057,26 +2064,20 @@ namespace Battleship
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(14, 37);
+            this.label25.Font = new System.Drawing.Font("Rockwell Condensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(4, 33);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(180, 31);
+            this.label25.Size = new System.Drawing.Size(221, 47);
             this.label25.TabIndex = 4;
-            this.label25.Text = "Enter location";
-            // 
-            // txtAttackBox
-            // 
-            this.txtAttackBox.Location = new System.Drawing.Point(216, 48);
-            this.txtAttackBox.Name = "txtAttackBox";
-            this.txtAttackBox.Size = new System.Drawing.Size(215, 20);
-            this.txtAttackBox.TabIndex = 5;
+            this.label25.Text = "Attack Location";
             // 
             // btnFire
             // 
             this.btnFire.BackColor = System.Drawing.Color.Firebrick;
-            this.btnFire.Location = new System.Drawing.Point(448, 48);
+            this.btnFire.Font = new System.Drawing.Font("Rockwell Condensed", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFire.Location = new System.Drawing.Point(335, 15);
             this.btnFire.Name = "btnFire";
-            this.btnFire.Size = new System.Drawing.Size(122, 23);
+            this.btnFire.Size = new System.Drawing.Size(103, 72);
             this.btnFire.TabIndex = 6;
             this.btnFire.Text = "Fire";
             this.btnFire.UseVisualStyleBackColor = false;
@@ -2085,6 +2086,8 @@ namespace Battleship
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.LightSlateGray;
+            this.groupBox5.BackgroundImage = global::Battleship.Properties.Resources.header_images;
+            this.groupBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox5.Controls.Add(this.gbAttackControls);
             this.groupBox5.Controls.Add(this.btnPlayAgain);
             this.groupBox5.Controls.Add(this.lbEnemyStatus);
@@ -2095,25 +2098,24 @@ namespace Battleship
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             // 
-            // lbEnemyStatus
+            // gbAttackControls
             // 
-            this.lbEnemyStatus.AutoSize = true;
-            this.lbEnemyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEnemyStatus.Location = new System.Drawing.Point(212, 109);
-            this.lbEnemyStatus.Name = "lbEnemyStatus";
-            this.lbEnemyStatus.Size = new System.Drawing.Size(228, 39);
-            this.lbEnemyStatus.TabIndex = 8;
-            this.lbEnemyStatus.Text = "Enemy Status";
+            this.gbAttackControls.Controls.Add(this.txtAttackBox);
+            this.gbAttackControls.Controls.Add(this.label25);
+            this.gbAttackControls.Controls.Add(this.btnFire);
+            this.gbAttackControls.Location = new System.Drawing.Point(1258, 83);
+            this.gbAttackControls.Name = "gbAttackControls";
+            this.gbAttackControls.Size = new System.Drawing.Size(461, 100);
+            this.gbAttackControls.TabIndex = 10;
+            this.gbAttackControls.TabStop = false;
             // 
-            // lbLogo
+            // txtAttackBox
             // 
-            this.lbLogo.AutoSize = true;
-            this.lbLogo.Font = new System.Drawing.Font("Rockwell Condensed", 50F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLogo.Location = new System.Drawing.Point(841, 16);
-            this.lbLogo.Name = "lbLogo";
-            this.lbLogo.Size = new System.Drawing.Size(249, 79);
-            this.lbLogo.TabIndex = 7;
-            this.lbLogo.Text = "BattleShip";
+            this.txtAttackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAttackBox.Location = new System.Drawing.Point(231, 19);
+            this.txtAttackBox.Name = "txtAttackBox";
+            this.txtAttackBox.Size = new System.Drawing.Size(94, 68);
+            this.txtAttackBox.TabIndex = 7;
             // 
             // btnPlayAgain
             // 
@@ -2128,27 +2130,40 @@ namespace Battleship
             this.btnPlayAgain.UseVisualStyleBackColor = false;
             this.btnPlayAgain.Click += new System.EventHandler(this.GameReset);
             // 
-            // gbAttackControls
+            // lbEnemyStatus
             // 
-            this.gbAttackControls.Controls.Add(this.label25);
-            this.gbAttackControls.Controls.Add(this.txtAttackBox);
-            this.gbAttackControls.Controls.Add(this.btnFire);
-            this.gbAttackControls.Location = new System.Drawing.Point(1174, 92);
-            this.gbAttackControls.Name = "gbAttackControls";
-            this.gbAttackControls.Size = new System.Drawing.Size(600, 100);
-            this.gbAttackControls.TabIndex = 10;
-            this.gbAttackControls.TabStop = false;
+            this.lbEnemyStatus.AutoSize = true;
+            this.lbEnemyStatus.Font = new System.Drawing.Font("Rockwell Condensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEnemyStatus.Location = new System.Drawing.Point(212, 109);
+            this.lbEnemyStatus.Name = "lbEnemyStatus";
+            this.lbEnemyStatus.Size = new System.Drawing.Size(194, 47);
+            this.lbEnemyStatus.TabIndex = 8;
+            this.lbEnemyStatus.Text = "Enemy Status";
+            // 
+            // lbLogo
+            // 
+            this.lbLogo.AutoSize = true;
+            this.lbLogo.Font = new System.Drawing.Font("Rockwell Condensed", 50F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLogo.Location = new System.Drawing.Point(841, 16);
+            this.lbLogo.Name = "lbLogo";
+            this.lbLogo.Size = new System.Drawing.Size(249, 79);
+            this.lbLogo.TabIndex = 7;
+            this.lbLogo.Text = "BattleShip";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackgroundImage = global::Battleship.Properties.Resources.metal;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1944, 1101);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.gbMainBoard);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Table";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbMainBoard.ResumeLayout(false);
@@ -2341,13 +2356,13 @@ namespace Battleship
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtAttackBox;
         private System.Windows.Forms.Button btnFire;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label lbEnemyStatus;
         private System.Windows.Forms.Label lbLogo;
         private System.Windows.Forms.Button btnPlayAgain;
         private System.Windows.Forms.GroupBox gbAttackControls;
+        private System.Windows.Forms.TextBox txtAttackBox;
     }
 }
 

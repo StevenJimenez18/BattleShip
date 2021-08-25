@@ -46,6 +46,8 @@ namespace Battleship
             UB = UpdatePlayerList(UB);
 
 
+            //---Player Models Below---//
+
             //Creates and sets Warship object for player
             PlayerShip warShip = new PlayerShip();
             warShip.Name = "Warship";
@@ -55,69 +57,69 @@ namespace Battleship
 
             //Creates and sets Destroyer object for player
             PlayerShip destroyer = new PlayerShip();
-            destroyer.Name = "Warship";
+            destroyer.Name = "Destroyer";
             destroyer.Location = DS;
             destroyer.HitPoints = 4;
             PlayerShip.GetDestroyer(destroyer);
 
             //Creates and sets Cruiser object for player
             PlayerShip cruiser = new PlayerShip();
-            destroyer.Name = "Warship";
-            destroyer.Location = DS;
-            destroyer.HitPoints = 4;
+            cruiser.Name = "Cruiser";
+            cruiser.Location = CS;
+            cruiser.HitPoints = 3;
             PlayerShip.GetCruiser(cruiser);
 
             //Creates and sets Tanker object for player
             PlayerShip tanker = new PlayerShip();
-            destroyer.Name = "Warship";
-            destroyer.Location = DS;
-            destroyer.HitPoints = 4;
+            tanker.Name = "Tanker";
+            tanker.Location = TK;
+            tanker.HitPoints = 2;
             PlayerShip.GetTanker(tanker);
 
             //Creates and sets UBoat object for player
             PlayerShip uBoat = new PlayerShip();
-            destroyer.Name = "Warship";
-            destroyer.Location = DS;
-            destroyer.HitPoints = 4;
+            uBoat.Name = "UBoat";
+            uBoat.Location = UB;
+            uBoat.HitPoints = 1;
             PlayerShip.GetUBoat(uBoat);
 
 
+            //---Enemy Models Below---//
 
-            WS = new List<string>() { txtWS1.Text, txtWS2.Text, txtWS3.Text, txtWS4.Text, txtWS5.Text };
-            DS = new List<string>() { txtDes1.Text, txtDes2.Text, txtDes3.Text, txtDes4.Text };
-            CS = new List<string>() { txtCrs1.Text, txtCrs2.Text, txtCrs3.Text };
-            TK = new List<string>() { txtTank1.Text, txtTank2.Text };
-            UB = new List<string>() { txtUB1.Text };
-
-            WS = UpdateEnemyList(WS);
-            DS = UpdateEnemyList(DS);
-            CS = UpdateEnemyList(CS);
-            TK = UpdateEnemyList(TK);
-            UB = UpdateEnemyList(UB);
-
+            //---Creates and sets Warship object for enemy
             EnemyShips enemyWarShip = new EnemyShips();
             enemyWarShip.Name = "Enemy Warship";
             enemyWarShip.HitPoints = 5;
             EnemyShips.GetEnemyLocations(enemyWarShip, enemyWarShip.HitPoints);
             EnemyShips.GetWarShip(enemyWarShip);
 
+            //Creates and sets Destroyer object for enemy
             EnemyShips enemyDestroyer = new EnemyShips();
             enemyDestroyer.Name = "Enemy Destroyer";
             enemyDestroyer.HitPoints = 4;
             EnemyShips.GetEnemyLocations(enemyDestroyer, enemyDestroyer.HitPoints);
             EnemyShips.GetDestroyer(enemyDestroyer);
 
+            //Creates and sets Cruiser object for player
             EnemyShips enemyCruiser = new EnemyShips();
             enemyCruiser.Name = "Enemy Cruiser";
             enemyCruiser.HitPoints = 3;
             EnemyShips.GetEnemyLocations(enemyCruiser, enemyCruiser.HitPoints);
             EnemyShips.GetCrusier(enemyCruiser);
 
+            //Creates and sets Tanker object for enemy
             EnemyShips enemyTanker = new EnemyShips();
             enemyTanker.Name = "Enemy Tanker";
             enemyTanker.HitPoints = 2;
             EnemyShips.GetEnemyLocations(enemyTanker, enemyTanker.HitPoints);
             EnemyShips.GetTanker(enemyTanker);
+
+            //Creates and sets UBoat object for player
+            EnemyShips enemyUBoat = new EnemyShips();
+            enemyUBoat.Name = "Enemy UBoat";
+            enemyUBoat.HitPoints = 1;
+            EnemyShips.GetEnemyLocations(enemyUBoat, enemyUBoat.HitPoints);
+            EnemyShips.GetUBoat(enemyUBoat);
 
             Form2.ActiveForm.Hide();
             Form1 form1 = new Form1();
@@ -187,6 +189,11 @@ namespace Battleship
                     letterPlaceholder++;
                 }
             }
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

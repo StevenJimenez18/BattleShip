@@ -51,8 +51,6 @@ namespace Battleship
             this.txtWS2 = new System.Windows.Forms.TextBox();
             this.txtWS1 = new System.Windows.Forms.TextBox();
             this.lbWarship = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -136,6 +134,7 @@ namespace Battleship
             this.button126 = new System.Windows.Forms.Button();
             this.button127 = new System.Windows.Forms.Button();
             this.button128 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
             this.gbWelcomeScreen.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -165,7 +164,6 @@ namespace Battleship
             this.gbWelcomeScreen.Controls.Add(this.txtWS2);
             this.gbWelcomeScreen.Controls.Add(this.txtWS1);
             this.gbWelcomeScreen.Controls.Add(this.lbWarship);
-            this.gbWelcomeScreen.Controls.Add(this.label27);
             this.gbWelcomeScreen.Controls.Add(this.label26);
             this.gbWelcomeScreen.Location = new System.Drawing.Point(58, 80);
             this.gbWelcomeScreen.Name = "gbWelcomeScreen";
@@ -175,10 +173,11 @@ namespace Battleship
             // 
             // btnCreateShips
             // 
+            this.btnCreateShips.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateShips.ForeColor = System.Drawing.Color.Black;
-            this.btnCreateShips.Location = new System.Drawing.Point(336, 575);
+            this.btnCreateShips.Location = new System.Drawing.Point(304, 575);
             this.btnCreateShips.Name = "btnCreateShips";
-            this.btnCreateShips.Size = new System.Drawing.Size(122, 38);
+            this.btnCreateShips.Size = new System.Drawing.Size(155, 38);
             this.btnCreateShips.TabIndex = 38;
             this.btnCreateShips.Text = "Create Ships";
             this.btnCreateShips.UseVisualStyleBackColor = true;
@@ -267,7 +266,7 @@ namespace Battleship
             this.lbTanker.AutoSize = true;
             this.lbTanker.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTanker.ForeColor = System.Drawing.Color.White;
-            this.lbTanker.Location = new System.Drawing.Point(51, 412);
+            this.lbTanker.Location = new System.Drawing.Point(54, 409);
             this.lbTanker.Name = "lbTanker";
             this.lbTanker.Size = new System.Drawing.Size(99, 31);
             this.lbTanker.TabIndex = 20;
@@ -302,7 +301,7 @@ namespace Battleship
             this.lbCruiser.AutoSize = true;
             this.lbCruiser.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCruiser.ForeColor = System.Drawing.Color.White;
-            this.lbCruiser.Location = new System.Drawing.Point(62, 344);
+            this.lbCruiser.Location = new System.Drawing.Point(51, 344);
             this.lbCruiser.Name = "lbCruiser";
             this.lbCruiser.Size = new System.Drawing.Size(102, 31);
             this.lbCruiser.TabIndex = 14;
@@ -359,28 +358,6 @@ namespace Battleship
             this.lbWarship.Size = new System.Drawing.Size(113, 31);
             this.lbWarship.TabIndex = 2;
             this.lbWarship.Text = "Warship";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(239, 126);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(292, 31);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "Lets Select your Ships.";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(200, 80);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(364, 39);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Welcome to Battleship!";
             // 
             // groupBox4
             // 
@@ -1304,6 +1281,17 @@ namespace Battleship
             this.button128.Text = "button128";
             this.button128.UseVisualStyleBackColor = false;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(176, 106);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(413, 39);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Enter Ship choices Below!";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1315,6 +1303,7 @@ namespace Battleship
             this.Controls.Add(this.gbTempPlayerSpace);
             this.Controls.Add(this.gbWelcomeScreen);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.gbWelcomeScreen.ResumeLayout(false);
             this.gbWelcomeScreen.PerformLayout();
@@ -1351,8 +1340,6 @@ namespace Battleship
         private System.Windows.Forms.TextBox txtWS2;
         private System.Windows.Forms.TextBox txtWS1;
         private System.Windows.Forms.Label lbWarship;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -1436,5 +1423,6 @@ namespace Battleship
         private System.Windows.Forms.Button button126;
         private System.Windows.Forms.Button button127;
         private System.Windows.Forms.Button button128;
+        private System.Windows.Forms.Label label26;
     }
 }

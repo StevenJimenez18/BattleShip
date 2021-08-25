@@ -22,18 +22,29 @@ namespace Battleship
         List<Button> playerButtonList;
 
         //Creates variables of player ship objects
-        PlayerShip playerWarship = PlayerShip.warShip;
+
+       /* PlayerShip playerWarship = PlayerShip.warShip;
         PlayerShip playerDestroyer = PlayerShip.destroyer;
         PlayerShip playerCruiser = PlayerShip.cruiser;
         PlayerShip playerTanker = PlayerShip.tanker;
+        PlayerShip playerUBoat = PlayerShip.uBoat;*/
 
         //Creates variables of enemy ship objects
-        EnemyShips enemyWarship = EnemyShips.warShip;
+        /*EnemyShips enemyWarship = EnemyShips.warShip;
         EnemyShips enemyDestroyer = EnemyShips.destroyer;
         EnemyShips enemyCruiser = EnemyShips.cruiser;
         EnemyShips enemyTanker = EnemyShips.tanker;
+        EnemyShips enemyUBoat = EnemyShips.uBoat;
+        EnemyShips enemyShip = new EnemyShips();*/
 
-        //Variables to prevent repeat messages
+        //Variables to prevent repeat messages for player
+        bool playerWarShipMessageDisplayed = false;
+        bool playerDestroyerMessageDisplayed = false;
+        bool playerCruiserMessageDisplayed = false;
+        bool playerTankerMessageDisplayed = false;
+        bool playerUBoatMessageDisplayed = false;
+
+        //Variables to prevent repeat messages for enemy
         bool enemyWarShipMessageDisplayed = false;
         bool enemyDestroyerMessageDisplayed = false;
         bool enemyCruiserMessageDisplayed = false;
@@ -43,7 +54,6 @@ namespace Battleship
 
         //Tracks game over
         bool gameOver = false;
-
 
         public Form1()
         {
@@ -65,7 +75,6 @@ namespace Battleship
             PlayerLoad();
             EnemyLoad();
             
-
         }
 
         //Updates the button names with a custom Algo
@@ -160,33 +169,33 @@ namespace Battleship
         public void PlayerLoad()
         {
 
-            
-            /*foreach (var s in PlayerShip.warShip.Location)
-            {
-                Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
-            }*/
-            /*
-            foreach (var s in PlayerShips.newPlayer.Destroyer)
+
+            foreach (var s in PlayerShip.warShip.Location)
             {
                 Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
                 tempButton.BackColor = Color.Green;
             }
-            foreach (var s in PlayerShips.newPlayer.Cruiser)
+
+            foreach (var s in PlayerShip.destroyer.Location)
             {
                 Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
                 tempButton.BackColor = Color.Green;
             }
-            foreach (var s in PlayerShips.newPlayer.Tanker)
+            foreach (var s in PlayerShip.cruiser.Location)
             {
                 Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
                 tempButton.BackColor = Color.Green;
             }
-            foreach (var s in PlayerShips.newPlayer.UBoat)
+            foreach (var s in PlayerShip.tanker.Location)
             {
                 Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
                 tempButton.BackColor = Color.Green;
-            }*/
+            }
+            foreach (var s in PlayerShip.uBoat.Location)
+            {
+                Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
+                tempButton.BackColor = Color.Green;
+            }
 
 
         }
@@ -216,12 +225,11 @@ namespace Battleship
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
                 tempButton.BackColor = Color.Green;
             }
-            /* foreach (var s in EnemyShips.newEnemy.UBoat)
-             {
-                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                 tempButton.BackColor = Color.Green;
-             }*/
-
+            foreach (var s in EnemyShips.uBoat.Location)
+            {
+                Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
+                tempButton.BackColor = Color.Green;
+            }
 
         }
 
@@ -233,9 +241,6 @@ namespace Battleship
             var playerAttack = txtAttackBox.Text = "E" + txtAttackBox.Text.ToUpper();
             txtAttackBox.Clear();
             TurnSwitch(playerAttack);
-            /*CheckEnemyHit(txtAttackBox.Text);
-            CheckEnemyDead();
-            EnemyAttack();*/
                
         }
 
@@ -263,11 +268,30 @@ namespace Battleship
         }
 
 
+        //Handles enemy attack - currently set to random selection. 
+        private string EnemyAttack()
+        {
+            lbEnemyStatus.Visible = true;
+            //lbEnemyStatus.Text = "Enemy is now choosing it's target.";
+
+            Random rand = new Random();
+            List<String> letters = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+            var letterSelection = rand.Next(0, 7);
+            var letterChoice = letters[letterSelection];
+            var numberSelection = rand.Next(1, 8);
+            StringBuilder attackChoice = new StringBuilder();
+            attackChoice.Append("P");
+            attackChoice.Append(letters[letterSelection]);
+            attackChoice.Append(numberSelection);
+            return attackChoice.ToString();
+
+        }
 
         //---Handles the players attack on the enemy. If hit will turn red. if miss will turn purple---//
         private void CheckEnemyHit(string text)
         {
             //---Checks Warship health and sets isdead property if hitpoints fall to zero---//
+
 
             if (EnemyShips.warShip.Location.Contains(text))
             {
@@ -302,6 +326,7 @@ namespace Battleship
                 {
                     EnemyShips.destroyer.IsDead = true;  
                 }
+
             }
 
             //---Checks Cruiser health and sets isdead property if hitpoints fall to zero---//
@@ -321,6 +346,7 @@ namespace Battleship
                 {
                     EnemyShips.cruiser.IsDead = true;
                 }
+
             }
 
             //---Checks Tanker health and sets isdead property if hitpoints fall to zero---//
@@ -342,8 +368,32 @@ namespace Battleship
                 }
             }
 
+
+            //---Checks Tanker health and sets isdead property if hitpoints fall to zero---//
+            if (EnemyShips.uBoat.Location.Contains(text))
+            {
+
+                //---Changes hit location to red---//
+                Button tempButton = enemyButtonList.Find(b => b.Name.ToString() == text);
+                tempButton.BackColor = Color.Firebrick;
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                EnemyShips.uBoat.HitPoints--;
+
+                //---changes isdead property when ship health falls to zero---//
+                if (EnemyShips.uBoat.HitPoints == 0)
+                {
+                    EnemyShips.uBoat.IsDead = true;
+                }
+            }
+
             //---Handles missed attacks---//
-            else if (!EnemyShips.warShip.Location.Contains(text) && !EnemyShips.destroyer.Location.Contains(text) && !EnemyShips.cruiser.Location.Contains(text))
+            else if (!EnemyShips.warShip.Location.Contains(text) 
+                     && !EnemyShips.destroyer.Location.Contains(text) 
+                     && !EnemyShips.cruiser.Location.Contains(text)
+                     && !EnemyShips.tanker.Location.Contains(text)
+                     && !EnemyShips.uBoat.Location.Contains(text))
             {
                 //---Changes miss location to purple---//
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == text);
@@ -355,8 +405,7 @@ namespace Battleship
         //Checks enemy ship heatlh. If a ship is destroyed the player will be notified
         private void CheckEnemyDead()
         {
-
-            
+         
             if (EnemyShips.warShip.IsDead == true)
             {
                 if (enemyWarShipMessageDisplayed == false)
@@ -394,66 +443,176 @@ namespace Battleship
                     DestroyedMessage("e", EnemyShips.tanker.Name);
                 }
             }
-        }
 
-        //Handles enemy attack - currently set to random selection. 
-        private string EnemyAttack()
-        {
-            lbEnemyStatus.Visible = true;
-            lbEnemyStatus.Text = "Enemy is now choosing it's target.";
-           
-            Random rand = new Random();
-            List<String> letters = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
-            var letterSelection = rand.Next(0, 7);
-            var letterChoice = letters[letterSelection];
-            var numberSelection = rand.Next(1, 8);
-            StringBuilder attackChoice = new StringBuilder();
-            attackChoice.Append("P");
-            attackChoice.Append(letters[letterSelection]);
-            attackChoice.Append(numberSelection);
-            //MessageBox.Show(attackChoice.ToString());
-            //PlayerFlow(attackChoice.ToString());
-            return attackChoice.ToString();
-            /*CheckPlayerHit();
-            CheckPlayerDead();*/
+            if (EnemyShips.uBoat.IsDead == true)
+            {
 
+                if (enemyUBoatMessageDisplayed == false)
+                {
+                    enemyUBoatMessageDisplayed = true;
+                    DestroyedMessage("e", EnemyShips.uBoat.Name);
+                }
+            }
         }
 
         //Verfies enemy attack on player. If hit will turn red. If miss will turn purple.
         private void CheckPlayerHit(String text)
         {
+
+            //---Checks Warship health and sets isdead property if hitpoints fall to zero---//
+
             if (PlayerShip.warShip.Location.Contains(text))
             {
-                PlayerShip.warShip.HitPoints--;
-                Button tempButton = playerButtonList.First(b => b.Name == text);
+                //---Changes hit location to red---//
+                Button tempButton = playerButtonList.Find(b => b.Name.ToString() == text);
                 tempButton.BackColor = Color.Firebrick;
-                //playerButtonList.Remove(tempButton);
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                PlayerShip.warShip.HitPoints--;
+
+                //changes isdead property when ship health falls to zero
+                if (PlayerShip.warShip.HitPoints == 0)
+                {
+                    PlayerShip.warShip.IsDead = true;
+                }
+
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}";
             }
-            else
+
+            if (PlayerShip.destroyer.Location.Contains(text))
             {
-                Button tempButton = playerButtonList.First(b => b.Name == text);
+                //---Changes hit location to red---//
+                Button tempButton = playerButtonList.Find(b => b.Name.ToString() == text);
+                tempButton.BackColor = Color.Firebrick;
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                PlayerShip.destroyer.HitPoints--;
+
+                //changes isdead property when ship health falls to zero
+                if (PlayerShip.destroyer.HitPoints == 0)
+                {
+                    PlayerShip.destroyer.IsDead = true;
+                }
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+            }
+
+            if (PlayerShip.cruiser.Location.Contains(text))
+            {
+                //---Changes hit location to red---//
+                Button tempButton = playerButtonList.Find(b => b.Name.ToString() == text);
+                tempButton.BackColor = Color.Firebrick;
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                PlayerShip.cruiser.HitPoints--;
+
+                //changes isdead property when ship health falls to zero
+                if (PlayerShip.cruiser.HitPoints == 0)
+                {
+                    PlayerShip.cruiser.IsDead = true;
+                }
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+            }
+
+            if (PlayerShip.tanker.Location.Contains(text))
+            {
+                //---Changes hit location to red---//
+                Button tempButton = playerButtonList.Find(b => b.Name.ToString() == text);
+                tempButton.BackColor = Color.Firebrick;
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                PlayerShip.tanker.HitPoints--;
+
+                //changes isdead property when ship health falls to zero
+                if (PlayerShip.tanker.HitPoints == 0)
+                {
+                    PlayerShip.tanker.IsDead = true;
+                }
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+            }
+
+            if (PlayerShip.uBoat.Location.Contains(text))
+            {
+                //---Changes hit location to red---//
+                Button tempButton = playerButtonList.Find(b => b.Name.ToString() == text);
+                tempButton.BackColor = Color.Firebrick;
+                //enemyButtonList.Remove(tempButton);
+
+                //---Decrements enemy ship health if hit---//
+                PlayerShip.uBoat.HitPoints--;
+
+                //changes isdead property when ship health falls to zero
+                if (PlayerShip.uBoat.HitPoints == 0)
+                {
+                    PlayerShip.uBoat.IsDead = true;
+                }
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+            }
+
+            //---Handles missed attacks---//
+            if (!PlayerShip.warShip.Location.Contains(text) 
+                    && !PlayerShip.destroyer.Location.Contains(text) 
+                    && !PlayerShip.cruiser.Location.Contains(text) 
+                    && !PlayerShip.tanker.Location.Contains(text) 
+                    && !PlayerShip.uBoat.Location.Contains(text))
+            {
+                //---Changes miss location to purple---//
+                Button tempButton = playerButtonList.First(b => b.Name.ToString() == text);
                 tempButton.BackColor = Color.Indigo;
+                lbEnemyStatus.Text = $"The enemy missed.";
                 //playerButtonList.Remove(tempButton);
             }
+
         }
 
         //Checks player ship health. If ship is destroyed the property will be updated here.
         private void CheckPlayerDead()
         {
-            if(PlayerShip.warShip.HitPoints == 0)
+            if(PlayerShip.warShip.IsDead == true)
             {
-                
-                    PlayerShip.warShip.IsDead = true;
-                    DestroyedMessage("p",PlayerShip.warShip.Name);
-                    MessageBox.Show($"Your {PlayerShip.warShip.Name} has been destroyed!");
-                
+                if (playerWarShipMessageDisplayed == false)
+                {
+                    playerWarShipMessageDisplayed = true;
+                    DestroyedMessage("p", PlayerShip.warShip.Name);
+                }
             }
-            if (PlayerShip.destroyer.HitPoints == 0)
+
+            if (PlayerShip.destroyer.IsDead == true)
             {
-                PlayerShip.destroyer.IsDead = true;
-                DestroyedMessage("p", PlayerShip.destroyer.Name);
-                MessageBox.Show($"Your {PlayerShip.destroyer.Name} has been destroyed!");
+                if (playerDestroyerMessageDisplayed == false)
+                {
+                    playerDestroyerMessageDisplayed = true;
+                    DestroyedMessage("p", PlayerShip.destroyer.Name);
+                }
             }
+            if (PlayerShip.cruiser.IsDead == true)
+            {
+                if (playerCruiserMessageDisplayed == false)
+                {
+                    playerCruiserMessageDisplayed = true;
+                    DestroyedMessage("p", PlayerShip.cruiser.Name);
+                }
+            }
+            if (PlayerShip.tanker.IsDead == true)
+            {
+                if (playerTankerMessageDisplayed == false)
+                {
+                    playerTankerMessageDisplayed = true;
+                    DestroyedMessage("p", PlayerShip.tanker.Name);
+                }
+            }
+            if (PlayerShip.uBoat.IsDead == true)
+            {
+                if (playerUBoatMessageDisplayed == false)
+                {
+                    playerUBoatMessageDisplayed = true;
+                    DestroyedMessage("p", PlayerShip.uBoat.Name);
+                }
+            }
+
         }
 
 
@@ -476,13 +635,13 @@ namespace Battleship
         //Handles game over
         private void CheckGameOver()
         {
-            if (playerWarship.IsDead == true && playerDestroyer.IsDead == true && playerCruiser.IsDead == true && playerTanker.IsDead == true)
+            if (PlayerShip.warShip.IsDead == true && PlayerShip.destroyer.IsDead == true && PlayerShip.cruiser.IsDead == true && PlayerShip.tanker.IsDead == true && PlayerShip.uBoat.IsDead == true)
             {
                 MessageBox.Show("The enemy has decimated your fleet. You lose.");
                 gameOver = true;
             }
 
-            if (enemyWarship.IsDead == true && enemyDestroyer.IsDead == true && enemyCruiser.IsDead == true && enemyTanker.IsDead == true)
+            if (EnemyShips.warShip.IsDead == true && EnemyShips.destroyer.IsDead == true && EnemyShips.cruiser.IsDead == true && EnemyShips.tanker.IsDead == true && EnemyShips.uBoat.IsDead == true)
             {
                 MessageBox.Show("All the enemies ships have been destroyed. YOU WIN!!!");
                 gameOver = true;
@@ -504,6 +663,11 @@ namespace Battleship
             Form1.ActiveForm.Hide();
             Form2 form2 = new Form2();
             form2.Show();
+        }
+
+        private void txtAttackBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
