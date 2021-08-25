@@ -205,6 +205,9 @@ namespace Battleship
             this.btnPlayAgain = new System.Windows.Forms.Button();
             this.lbEnemyStatus = new System.Windows.Forms.Label();
             this.lbLogo = new System.Windows.Forms.Label();
+            this.btnCloseApp = new System.Windows.Forms.Button();
+            this.btnToggleAudio = new System.Windows.Forms.Button();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.gbMainBoard.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -2075,9 +2078,9 @@ namespace Battleship
             // 
             this.btnFire.BackColor = System.Drawing.Color.Firebrick;
             this.btnFire.Font = new System.Drawing.Font("Rockwell Condensed", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFire.Location = new System.Drawing.Point(335, 15);
+            this.btnFire.Location = new System.Drawing.Point(331, 19);
             this.btnFire.Name = "btnFire";
-            this.btnFire.Size = new System.Drawing.Size(103, 72);
+            this.btnFire.Size = new System.Drawing.Size(113, 68);
             this.btnFire.TabIndex = 6;
             this.btnFire.Text = "Fire";
             this.btnFire.UseVisualStyleBackColor = false;
@@ -2088,6 +2091,9 @@ namespace Battleship
             this.groupBox5.BackColor = System.Drawing.Color.LightSlateGray;
             this.groupBox5.BackgroundImage = global::Battleship.Properties.Resources.header_images;
             this.groupBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox5.Controls.Add(this.btnRestart);
+            this.groupBox5.Controls.Add(this.btnToggleAudio);
+            this.groupBox5.Controls.Add(this.btnCloseApp);
             this.groupBox5.Controls.Add(this.gbAttackControls);
             this.groupBox5.Controls.Add(this.btnPlayAgain);
             this.groupBox5.Controls.Add(this.lbEnemyStatus);
@@ -2111,10 +2117,10 @@ namespace Battleship
             // 
             // txtAttackBox
             // 
-            this.txtAttackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAttackBox.Font = new System.Drawing.Font("Rockwell Condensed", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAttackBox.Location = new System.Drawing.Point(231, 19);
             this.txtAttackBox.Name = "txtAttackBox";
-            this.txtAttackBox.Size = new System.Drawing.Size(94, 68);
+            this.txtAttackBox.Size = new System.Drawing.Size(94, 70);
             this.txtAttackBox.TabIndex = 7;
             // 
             // btnPlayAgain
@@ -2149,6 +2155,42 @@ namespace Battleship
             this.lbLogo.Size = new System.Drawing.Size(249, 79);
             this.lbLogo.TabIndex = 7;
             this.lbLogo.Text = "BattleShip";
+            // 
+            // btnCloseApp
+            // 
+            this.btnCloseApp.BackColor = System.Drawing.Color.SlateGray;
+            this.btnCloseApp.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseApp.Location = new System.Drawing.Point(6, 16);
+            this.btnCloseApp.Name = "btnCloseApp";
+            this.btnCloseApp.Size = new System.Drawing.Size(104, 32);
+            this.btnCloseApp.TabIndex = 44;
+            this.btnCloseApp.Text = "Close Game";
+            this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
+            // btnToggleAudio
+            // 
+            this.btnToggleAudio.BackColor = System.Drawing.Color.SlateGray;
+            this.btnToggleAudio.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToggleAudio.Location = new System.Drawing.Point(1810, 16);
+            this.btnToggleAudio.Name = "btnToggleAudio";
+            this.btnToggleAudio.Size = new System.Drawing.Size(104, 32);
+            this.btnToggleAudio.TabIndex = 45;
+            this.btnToggleAudio.Text = "Audio Toggle";
+            this.btnToggleAudio.UseVisualStyleBackColor = false;
+            this.btnToggleAudio.Click += new System.EventHandler(this.btnToggleAudio_Click);
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.SlateGray;
+            this.btnRestart.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestart.Location = new System.Drawing.Point(6, 215);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(104, 32);
+            this.btnRestart.TabIndex = 46;
+            this.btnRestart.Text = "Restart Game";
+            this.btnRestart.UseVisualStyleBackColor = false;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // Form1
             // 
@@ -2363,6 +2405,9 @@ namespace Battleship
         private System.Windows.Forms.Button btnPlayAgain;
         private System.Windows.Forms.GroupBox gbAttackControls;
         private System.Windows.Forms.TextBox txtAttackBox;
+        private System.Windows.Forms.Button btnCloseApp;
+        private System.Windows.Forms.Button btnToggleAudio;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

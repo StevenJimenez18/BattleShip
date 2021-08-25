@@ -111,6 +111,10 @@
     <Content Include="Images\battleshiplogo2.jpg" />
     <Content Include="Images\battleshiplogo3.jpg" />
     <Content Include="Images\ocean2.jpg" />
+    <Content Include="Sound\form2.wav" />
+    <Content Include="Sound\form3.wav" />
+    <Content Include="Sound\themepart1.wav" />
+    <Content Include="Sound\form1.wav" />
     <None Include="Images\ocean.jpg" />
     <None Include="Images\bssmall.jpg" />
     <None Include="Images\bslogo.PNG" />

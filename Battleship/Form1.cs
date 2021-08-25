@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using BattleShipLibrary;
-
+using System.Media;
 
 namespace Battleship
 {
     public partial class Form1 : Form
     {
         //Global variables
+
+
+        SoundPlayer music = new SoundPlayer(@"C:\Users\Steven\Desktop\MSSA\BattleShipGame\Battleship\Sound\form1.wav");
+        bool audioPlaying = true;
 
         //Holds button list for reference
         List<Button> enemyButtonList;
@@ -69,6 +73,7 @@ namespace Battleship
      
         private void Form1_Load(object sender, EventArgs e)
         {
+            music.PlayLooping();
             lbEnemyStatus.Visible = false;
             btnPlayAgain.Visible = false;
             GameBoardLoad();
@@ -477,7 +482,7 @@ namespace Battleship
                     PlayerShip.warShip.IsDead = true;
                 }
 
-                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}";
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
             }
 
             if (PlayerShip.destroyer.Location.Contains(text))
@@ -495,7 +500,7 @@ namespace Battleship
                 {
                     PlayerShip.destroyer.IsDead = true;
                 }
-                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.destroyer.Name}!";
             }
 
             if (PlayerShip.cruiser.Location.Contains(text))
@@ -513,7 +518,7 @@ namespace Battleship
                 {
                     PlayerShip.cruiser.IsDead = true;
                 }
-                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.cruiser.Name}!";
             }
 
             if (PlayerShip.tanker.Location.Contains(text))
@@ -531,7 +536,7 @@ namespace Battleship
                 {
                     PlayerShip.tanker.IsDead = true;
                 }
-                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.tanker.Name}!";
             }
 
             if (PlayerShip.uBoat.Location.Contains(text))
@@ -549,7 +554,7 @@ namespace Battleship
                 {
                     PlayerShip.uBoat.IsDead = true;
                 }
-                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.warShip.Name}!";
+                lbEnemyStatus.Text = $"The enemy hit your {PlayerShip.uBoat.Name}!";
             }
 
             //---Handles missed attacks---//
@@ -661,13 +666,52 @@ namespace Battleship
         private void GameReset(object sender, EventArgs e)
         {
             Form1.ActiveForm.Hide();
-            Form2 form2 = new Form2();
-            form2.Show();
+            Form3 form3 = new Form3();
+            form3.Show();
         }
 
         private void txtAttackBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnToggleAudio_Click(object sender, EventArgs e)
+        {
+            if (audioPlaying == true)
+            {
+                music.Stop();
+                audioPlaying = false;
+
+            }
+
+            else if (audioPlaying == false)
+            {
+                music.PlayLooping();
+                audioPlaying = true;
+
+            }
+        }
+
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            music.Stop();
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+
+           
+
+            Form3 form3 = new Form3();
+            Parallel.Invoke(() => ActiveForm.Close(),
+                () => form3.Show()
+                            
+            );
+
+            /*Form1.ActiveForm.Hide();
+            Form3 form3 = new Form3();
+            form3.Show();*/
         }
     }
 }

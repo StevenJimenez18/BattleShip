@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +15,21 @@ namespace Battleship
 {
     public partial class Form3 : Form
     {
+        SoundPlayer music = new SoundPlayer(@"C:\Users\Steven\Desktop\MSSA\BattleShipGame\Battleship\Sound\form3.wav");
+        bool audioPlaying = true;
+        /*Task chooseOwn = new Task (() =>
+        {
+            Form3.ActiveForm.Hide();
+            Form2 form2 = new Form2();
+            form2.Show(); 
+        });
         
+        Task autoChoose = new Task (() =>
+        {
+            Form3.ActiveForm.Close();
+            Form1 form1 = new Form1();
+            form1.Show(); 
+        });*/
 
         public Form3()
         {
@@ -22,18 +38,47 @@ namespace Battleship
         }
 
         private void Form3_Load(object sender, EventArgs e)
-        {
-
+        { 
+            music.PlayLooping();
         }
 
         private void btnChooseOwn_Click(object sender, EventArgs e)
         {
+            music.Stop();
+
+            /*Form2 form2 = new Form2();
+            Parallel.Invoke(() => ActiveForm.Close(), 
+                            () => form2.Show());*/
+
             Form3.ActiveForm.Hide();
             Form2 form2 = new Form2();
             form2.Show();
         }
 
         private void btnAutoCreate_Click(object sender, EventArgs e)
+        {
+
+
+            //Thread interval to prevent duplicater ships
+            //Thread.Sleep(10);
+
+            /*Task playerShips = new Task(() => CreatePlayerShips());
+            Task enemyships = new Task(() => CreateEnemyShips());
+
+            playerShips.Start();
+            enemyships.Start();*/
+
+            CreatePlayerShips();
+            //Thread.Sleep(20);
+            CreateEnemyShips();
+
+            music.Stop();
+            Form3.ActiveForm.Hide();
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
+
+        private void CreatePlayerShips()
         {
             //---Player Models Below---//
 
@@ -71,7 +116,10 @@ namespace Battleship
             uBoat.HitPoints = 1;
             PlayerShip.GetUBoat(uBoat);
             PlayerShip.GetPlayerLocations(uBoat, uBoat.HitPoints);
+        }
 
+        private void CreateEnemyShips()
+        {
             //---Enemy Models Below---//
 
             //---Creates and sets Warship object for enemy
@@ -87,6 +135,7 @@ namespace Battleship
             enemyDestroyer.HitPoints = 4;
             EnemyShips.GetEnemyLocations(enemyDestroyer, enemyDestroyer.HitPoints);
             EnemyShips.GetDestroyer(enemyDestroyer);
+
 
             //Creates and sets Cruiser object for player
             EnemyShips enemyCruiser = new EnemyShips();
@@ -108,10 +157,32 @@ namespace Battleship
             enemyUBoat.HitPoints = 1;
             EnemyShips.GetEnemyLocations(enemyUBoat, enemyUBoat.HitPoints);
             EnemyShips.GetUBoat(enemyUBoat);
+        }
 
-            Form3.ActiveForm.Hide();
-            Form1 form1 = new Form1();
-            form1.Show();
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnAudioToggle_Click(object sender, EventArgs e)
+        {
+            
+
+            if(audioPlaying == true)
+            {
+                music.Stop();
+                audioPlaying = false;
+                
+            }
+
+            else if (audioPlaying == false)
+            {
+                music.PlayLooping();
+                audioPlaying = true;
+                
+            }
+
+            
         }
     }
 }

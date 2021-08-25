@@ -16,8 +16,6 @@ namespace BattleShipLibrary
         public bool IsDead { get; set; }
         public int HitPoints { get; set ; }
 
-
-        //private readonly Random rand = new Random();
         public static PlayerShip warShip { get; set; }
         public static PlayerShip destroyer { get; set; }
         public static PlayerShip cruiser { get; set; }
@@ -25,6 +23,10 @@ namespace BattleShipLibrary
         public static PlayerShip uBoat { get; set; }
 
         public static List<string> chosenPlayerLocations = new List<string>();
+
+        //---used to randomize variable choices in player ship algo---//
+        private static Random rand = new Random();
+
 
         public PlayerShip()
         {
@@ -56,8 +58,6 @@ namespace BattleShipLibrary
         public static void GetPlayerLocations(PlayerShip playership, int size)
         {
 
-            //Thread.Sleep(100);
-
             //---Holds starting number---//
             int startingNumber = 0;
 
@@ -81,10 +81,7 @@ namespace BattleShipLibrary
             while (locations.Count < size)
             {
 
-                //---used to randomize variable choices---//
-                Thread.Sleep(50);
-                Random rand = new Random();
-
+ 
                 //---Decides Alignment position---//
                 int alignment = rand.Next(1,10);
 

@@ -17,14 +17,14 @@ namespace BattleShipLibrary
 
         public static List<string> chosenEnemyLocations = new List<string>();
 
-        private readonly Random rand = new Random();
-
         public static EnemyShips warShip { get; set; }
         public static EnemyShips destroyer { get; set; }
         public static EnemyShips cruiser { get; set; }
         public static EnemyShips tanker { get; set; }
         public static EnemyShips uBoat { get; set; }
-        
+
+        //---used to randomize variable choices in enemy ship algo---//
+        private static Random rand = new Random();
 
         public static void GetWarShip(EnemyShips enemyShip)
         {
@@ -51,8 +51,8 @@ namespace BattleShipLibrary
         public static void GetEnemyLocations(EnemyShips enemyship, int size)
         {
             //---used to randomize variable choices---//
-            Thread.Sleep(50);
-            Random rand = new Random();
+            //Thread.Sleep(50);
+            //Random rand = new Random();
 
             //---Holds starting number---//
             int startingNumber = 0;
@@ -68,22 +68,6 @@ namespace BattleShipLibrary
 
             //---Helps build the Location name---//
             StringBuilder sb = new StringBuilder();
-
-            //Account for out of bounds
-            //Account for overlap
-            //Save to List 
-
-            /*if (alignment == 0)
-            {
-                //Vertical
-                for (int i = 0; i < boardlimit.Length; i++)
-                {
-                    //Simple approach, continous numbers
-                    //startingNumber
-
-                }
-            }*/
-                
 
             while(locations.Count < size)
             {

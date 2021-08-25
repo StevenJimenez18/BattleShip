@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,13 +16,14 @@ namespace Battleship
 {
     public partial class Form2 : Form
     {
-        
-        
+        SoundPlayer music = new SoundPlayer(@"C:\Users\Steven\Desktop\MSSA\BattleShipGame\Battleship\Sound\form2.wav");
+        bool audioPlaying = true;
         List<Button> playerButtonList;
 
         public Form2()
         {
             InitializeComponent();
+            music.PlayLooping();
             ButtonLoad();
         }
 
@@ -121,6 +123,7 @@ namespace Battleship
             EnemyShips.GetEnemyLocations(enemyUBoat, enemyUBoat.HitPoints);
             EnemyShips.GetUBoat(enemyUBoat);
 
+            music.Stop();
             Form2.ActiveForm.Hide();
             Form1 form1 = new Form1();
             form1.Show();
@@ -194,6 +197,29 @@ namespace Battleship
         private void label27_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnAudioToggle_Click(object sender, EventArgs e)
+        {
+
+            if (audioPlaying == true)
+            {
+                music.Stop();
+                audioPlaying = false;
+
+            }
+
+            else if (audioPlaying == false)
+            {
+                music.PlayLooping();
+                audioPlaying = true;
+
+            }
         }
     }
 }

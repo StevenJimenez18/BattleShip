@@ -51,6 +51,7 @@ namespace Battleship
             this.txtWS2 = new System.Windows.Forms.TextBox();
             this.txtWS1 = new System.Windows.Forms.TextBox();
             this.lbWarship = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -134,7 +135,8 @@ namespace Battleship
             this.button126 = new System.Windows.Forms.Button();
             this.button127 = new System.Windows.Forms.Button();
             this.button128 = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
+            this.btnCloseApp = new System.Windows.Forms.Button();
+            this.btnAudioToggle = new System.Windows.Forms.Button();
             this.gbWelcomeScreen.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -358,6 +360,17 @@ namespace Battleship
             this.lbWarship.Size = new System.Drawing.Size(113, 31);
             this.lbWarship.TabIndex = 2;
             this.lbWarship.Text = "Warship";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(176, 106);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(413, 39);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Enter Ship choices Below!";
             // 
             // groupBox4
             // 
@@ -1281,16 +1294,27 @@ namespace Battleship
             this.button128.Text = "button128";
             this.button128.UseVisualStyleBackColor = false;
             // 
-            // label26
+            // btnCloseApp
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(176, 106);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(413, 39);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Enter Ship choices Below!";
+            this.btnCloseApp.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseApp.Location = new System.Drawing.Point(12, 12);
+            this.btnCloseApp.Name = "btnCloseApp";
+            this.btnCloseApp.Size = new System.Drawing.Size(104, 28);
+            this.btnCloseApp.TabIndex = 131;
+            this.btnCloseApp.Text = "Close Game";
+            this.btnCloseApp.UseVisualStyleBackColor = true;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
+            // btnAudioToggle
+            // 
+            this.btnAudioToggle.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAudioToggle.Location = new System.Drawing.Point(12, 763);
+            this.btnAudioToggle.Name = "btnAudioToggle";
+            this.btnAudioToggle.Size = new System.Drawing.Size(104, 28);
+            this.btnAudioToggle.TabIndex = 132;
+            this.btnAudioToggle.Text = "Audio Toggle";
+            this.btnAudioToggle.UseVisualStyleBackColor = true;
+            this.btnAudioToggle.Click += new System.EventHandler(this.btnAudioToggle_Click);
             // 
             // Form2
             // 
@@ -1298,6 +1322,8 @@ namespace Battleship
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1853, 803);
+            this.Controls.Add(this.btnAudioToggle);
+            this.Controls.Add(this.btnCloseApp);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbTempPlayerSpace);
@@ -1424,5 +1450,7 @@ namespace Battleship
         private System.Windows.Forms.Button button127;
         private System.Windows.Forms.Button button128;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnCloseApp;
+        private System.Windows.Forms.Button btnAudioToggle;
     }
 }
