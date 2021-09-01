@@ -25,22 +25,6 @@ namespace Battleship
         List<Button> enemyButtonList;
         List<Button> playerButtonList;
 
-        //Creates variables of player ship objects
-
-       /* PlayerShip playerWarship = PlayerShip.warShip;
-        PlayerShip playerDestroyer = PlayerShip.destroyer;
-        PlayerShip playerCruiser = PlayerShip.cruiser;
-        PlayerShip playerTanker = PlayerShip.tanker;
-        PlayerShip playerUBoat = PlayerShip.uBoat;*/
-
-        //Creates variables of enemy ship objects
-        /*EnemyShips enemyWarship = EnemyShips.warShip;
-        EnemyShips enemyDestroyer = EnemyShips.destroyer;
-        EnemyShips enemyCruiser = EnemyShips.cruiser;
-        EnemyShips enemyTanker = EnemyShips.tanker;
-        EnemyShips enemyUBoat = EnemyShips.uBoat;
-        EnemyShips enemyShip = new EnemyShips();*/
-
         //Variables to prevent repeat messages for player
         bool playerWarShipMessageDisplayed = false;
         bool playerDestroyerMessageDisplayed = false;
@@ -194,7 +178,7 @@ namespace Battleship
             foreach (var s in PlayerShip.tanker.Location)
             {
                 Button tempButton = playerButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+               tempButton.BackColor = Color.Green;
             }
             foreach (var s in PlayerShip.uBoat.Location)
             {
@@ -213,27 +197,27 @@ namespace Battleship
             foreach (var s in EnemyShips.warShip.Location)
             {
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+                //tempButton.BackColor = Color.Green;
             }
             foreach (var s in EnemyShips.destroyer.Location)
             {
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+                //tempButton.BackColor = Color.Green;
             }
             foreach (var s in EnemyShips.cruiser.Location)
             {
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+                //tempButton.BackColor = Color.Green;
             }
             foreach (var s in EnemyShips.tanker.Location)
             {
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+                //tempButton.BackColor = Color.Green;
             }
             foreach (var s in EnemyShips.uBoat.Location)
             {
                 Button tempButton = enemyButtonList.First(b => b.Name.ToString() == s);
-                tempButton.BackColor = Color.Green;
+                //tempButton.BackColor = Color.Green;
             }
 
         }
@@ -242,10 +226,18 @@ namespace Battleship
         //Game Mechanics
         private void btnFire_Click(object sender, EventArgs e)
         {
+            bool result = CheckPlayerChoice();
 
-            var playerAttack = txtAttackBox.Text = "E" + txtAttackBox.Text.ToUpper();
-            txtAttackBox.Clear();
-            TurnSwitch(playerAttack);
+            if (result == true)
+            {
+                var playerAttack = txtAttackBox.Text = "E" + txtAttackBox.Text.ToUpper();
+                txtAttackBox.Clear();
+                TurnSwitch(playerAttack);
+            }
+            else if (result == false)
+            {
+                MessageBox.Show("An invalid choice was entered. Choices entered must be one letter and one number and no more than two charecters long. EX: A1, B2");
+            }
                
         }
 
@@ -458,6 +450,34 @@ namespace Battleship
                     DestroyedMessage("e", EnemyShips.uBoat.Name);
                 }
             }
+        }
+
+        private bool CheckPlayerChoice()
+        {
+            List<string> AlphaList = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+            List<string> numList = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8" };
+            List<string> locations = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sbLocations = new StringBuilder();
+
+            foreach (var letter in AlphaList)
+            {
+                foreach (var number in numList)
+                {
+                    sbLocations.Append(letter);
+                    sbLocations.Append(number);
+                    locations.Add(sbLocations.ToString());
+                    sbLocations.Clear();
+                }
+            }
+         
+                if (!locations.Contains(txtAttackBox.Text.ToUpper()))
+                {
+                    return false;
+                }
+         
+            sb.Clear();
+            return true;
         }
 
         //Verfies enemy attack on player. If hit will turn red. If miss will turn purple.
@@ -701,17 +721,7 @@ namespace Battleship
         private void btnRestart_Click(object sender, EventArgs e)
         {
 
-           
-
-            Form3 form3 = new Form3();
-            Parallel.Invoke(() => ActiveForm.Close(),
-                () => form3.Show()
-                            
-            );
-
-            /*Form1.ActiveForm.Hide();
-            Form3 form3 = new Form3();
-            form3.Show();*/
+            Application.Restart();
         }
     }
 }

@@ -19,6 +19,13 @@ namespace Battleship
         SoundPlayer music = new SoundPlayer(@"C:\Users\Steven\Desktop\MSSA\BattleShipGame\Battleship\Sound\form2.wav");
         bool audioPlaying = true;
         List<Button> playerButtonList;
+        bool result;
+
+        List<string> WS = new List<string>();
+        List<string> DS = new List<string>();
+        List<string> CS = new List<string>();
+        List<string> TK = new List<string>();
+        List<string> UB = new List<string>();
 
         public Form2()
         {
@@ -27,26 +34,150 @@ namespace Battleship
             ButtonLoad();
         }
 
-        private void txtWS1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btnCreateShips_Click(object sender, EventArgs e)
         {
-            List<string> WS = new List<string>() { txtWS1.Text, txtWS2.Text, txtWS3.Text, txtWS4.Text, txtWS5.Text };
-            List<string> DS = new List<string>() { txtDes1.Text, txtDes2.Text, txtDes3.Text, txtDes4.Text };
-            List<string> CS = new List<string>() { txtCrs1.Text, txtCrs2.Text, txtCrs3.Text };
-            List<string> TK = new List<string>() { txtTank1.Text, txtTank2.Text };
-            List<string> UB = new List<string>() { txtUB1.Text };
+     
+            /*List<string> WS = new List<string>() { txtWS1.Text, txtWS2.Text, txtWS3.Text, txtWS4.Text, txtWS5.Text };
+            List<string> DS = new List<string>() { txtDS1.Text, txtDS2.Text, txtDS3.Text, txtDS4.Text };
+            List<string> CS = new List<string>() { txtCS1.Text, txtCS2.Text, txtCS3.Text };
+            List<string> TK = new List<string>() { txtTK1.Text, txtTK2.Text };
+            List<string> UB = new List<string>() { txtUB1.Text };*/
 
-            //Corrects the Names of the locations and Invokes Capitalization
-            WS = UpdatePlayerList(WS);
-            DS = UpdatePlayerList(DS);
-            CS = UpdatePlayerList(CS);
-            TK = UpdatePlayerList(TK);
-            UB = UpdatePlayerList(UB);
+            result = ValidateUserChoices();
 
+            if (result == true)
+            {
+                SetUserChoices();
+                //Corrects the Names of the locations and Invokes Capitalization
+                WS = UpdatePlayerList(WS);
+                DS = UpdatePlayerList(DS);
+                CS = UpdatePlayerList(CS);
+                TK = UpdatePlayerList(TK);
+                UB = UpdatePlayerList(UB);
+
+                //Method call to create player ships
+                CreatePlayerShips(WS, DS, CS, TK, UB);
+
+                //Method call to create enemy ships
+                CreateEnemyShips();
+
+                music.Stop();
+                Form2.ActiveForm.Hide();
+                Form1 form1 = new Form1();
+                form1.Show();
+            }
+
+            else if(result == false)
+            {
+                MessageBox.Show("Please enter valid choices. Choices entered must be one letter and one number per box and no more than two charecters long. EX: A1, B2");
+            }
+        }
+
+        public bool ValidateUserChoices()
+        {
+            List<string> tempList = new List<string>();
+            tempList.Add(txtWS1.Text);
+            tempList.Add(txtWS2.Text);
+            tempList.Add(txtWS3.Text);
+            tempList.Add(txtWS4.Text);
+            tempList.Add(txtWS5.Text);
+
+            tempList.Add(txtDS1.Text);
+            tempList.Add(txtDS2.Text);
+            tempList.Add(txtDS3.Text);
+            tempList.Add(txtDS4.Text);
+
+            tempList.Add(txtCS1.Text);
+            tempList.Add(txtCS2.Text);
+            tempList.Add(txtCS3.Text);
+
+            tempList.Add(txtTK1.Text);
+            tempList.Add(txtTK2.Text);
+
+            tempList.Add(txtUB1.Text);
+
+            List<string> AlphaList = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+            List<string> numList = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8" };
+            List<string> locations = new List<string>();
+            int counter = 1;
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sbLocations = new StringBuilder();
+
+            foreach (var letter in AlphaList)
+            {
+                foreach (var number in numList)
+                {
+                    sbLocations.Append(letter);
+                    sbLocations.Append(number);
+                    locations.Add(sbLocations.ToString());
+                    sbLocations.Clear();
+                }
+            }
+
+
+            for(int i = 0; i < tempList.Count; i++)
+            {
+                if (!locations.Contains(tempList[i].ToUpper()))
+                {
+                    return false;
+                }
+            }
+
+            sb.Clear();
+            return true;
+        }
+    
+        private void SetUserChoices()
+        {
+            WS.Add(txtWS1.Text);
+            WS.Add(txtWS2.Text);
+            WS.Add(txtWS3.Text);
+            WS.Add(txtWS4.Text);
+            WS.Add(txtWS5.Text);
+
+            DS.Add(txtDS1.Text);
+            DS.Add(txtDS2.Text);
+            DS.Add(txtDS3.Text);
+            DS.Add(txtDS4.Text);
+
+            CS.Add(txtCS1.Text);
+            CS.Add(txtCS2.Text);
+            CS.Add(txtCS3.Text);
+
+            TK.Add(txtTK1.Text);
+            TK.Add(txtTK2.Text);
+
+            UB.Add(txtUB1.Text);
+
+        }
+
+        private void ClearTextBoxes()
+        {
+            txtWS1.Clear();
+            txtWS2.Clear();
+            txtWS3.Clear();
+            txtWS4.Clear();
+            txtWS5.Clear();
+
+            txtDS1.Clear();
+            txtDS2.Clear();
+            txtDS3.Clear();
+            txtDS4.Clear();
+
+            txtCS1.Clear();
+            txtCS2.Clear();
+            txtCS3.Clear();
+
+            txtTK1.Clear();
+            txtTK2.Clear();
+
+            txtUB1.Clear();
+        }
+
+        private void CreatePlayerShips(List<string> WS, List<string> DS, List<string> CS, List<string> TK, List<string> UB)
+        {
 
             //---Player Models Below---//
 
@@ -84,8 +215,10 @@ namespace Battleship
             uBoat.Location = UB;
             uBoat.HitPoints = 1;
             PlayerShip.GetUBoat(uBoat);
+        }
 
-
+        private void CreateEnemyShips()
+        {
             //---Enemy Models Below---//
 
             //---Creates and sets Warship object for enemy
@@ -122,12 +255,6 @@ namespace Battleship
             enemyUBoat.HitPoints = 1;
             EnemyShips.GetEnemyLocations(enemyUBoat, enemyUBoat.HitPoints);
             EnemyShips.GetUBoat(enemyUBoat);
-
-            music.Stop();
-            Form2.ActiveForm.Hide();
-            Form1 form1 = new Form1();
-            form1.Show();
-            
         }
 
         public List<string> UpdateEnemyList(List<string> list)
@@ -199,6 +326,11 @@ namespace Battleship
 
         }
 
+        private void ReloadApp()
+        {
+            
+        }
+
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
@@ -220,6 +352,21 @@ namespace Battleship
                 audioPlaying = true;
 
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtWS1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRestartGame_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

@@ -30,26 +30,26 @@ namespace Battleship
         private void InitializeComponent()
         {
             this.gbWelcomeScreen = new System.Windows.Forms.GroupBox();
+            this.txtWS1 = new System.Windows.Forms.TextBox();
             this.btnCreateShips = new System.Windows.Forms.Button();
-            this.txtDes4 = new System.Windows.Forms.TextBox();
-            this.txtDes3 = new System.Windows.Forms.TextBox();
-            this.txtDes2 = new System.Windows.Forms.TextBox();
-            this.txtDes1 = new System.Windows.Forms.TextBox();
+            this.txtDS4 = new System.Windows.Forms.TextBox();
+            this.txtDS3 = new System.Windows.Forms.TextBox();
+            this.txtDS2 = new System.Windows.Forms.TextBox();
+            this.txtDS1 = new System.Windows.Forms.TextBox();
             this.lbDestroyer = new System.Windows.Forms.Label();
             this.txtUB1 = new System.Windows.Forms.TextBox();
             this.lbUboat = new System.Windows.Forms.Label();
-            this.txtTank2 = new System.Windows.Forms.TextBox();
-            this.txtTank1 = new System.Windows.Forms.TextBox();
+            this.txtTK2 = new System.Windows.Forms.TextBox();
+            this.txtTK1 = new System.Windows.Forms.TextBox();
             this.lbTanker = new System.Windows.Forms.Label();
-            this.txtCrs3 = new System.Windows.Forms.TextBox();
-            this.txtCrs2 = new System.Windows.Forms.TextBox();
-            this.txtCrs1 = new System.Windows.Forms.TextBox();
+            this.txtCS3 = new System.Windows.Forms.TextBox();
+            this.txtCS2 = new System.Windows.Forms.TextBox();
+            this.txtCS1 = new System.Windows.Forms.TextBox();
             this.lbCruiser = new System.Windows.Forms.Label();
             this.txtWS5 = new System.Windows.Forms.TextBox();
             this.txtWS4 = new System.Windows.Forms.TextBox();
             this.txtWS3 = new System.Windows.Forms.TextBox();
             this.txtWS2 = new System.Windows.Forms.TextBox();
-            this.txtWS1 = new System.Windows.Forms.TextBox();
             this.lbWarship = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -137,6 +137,7 @@ namespace Battleship
             this.button128 = new System.Windows.Forms.Button();
             this.btnCloseApp = new System.Windows.Forms.Button();
             this.btnAudioToggle = new System.Windows.Forms.Button();
+            this.btnRestartGame = new System.Windows.Forms.Button();
             this.gbWelcomeScreen.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -145,26 +146,26 @@ namespace Battleship
             // 
             // gbWelcomeScreen
             // 
+            this.gbWelcomeScreen.Controls.Add(this.txtWS1);
             this.gbWelcomeScreen.Controls.Add(this.btnCreateShips);
-            this.gbWelcomeScreen.Controls.Add(this.txtDes4);
-            this.gbWelcomeScreen.Controls.Add(this.txtDes3);
-            this.gbWelcomeScreen.Controls.Add(this.txtDes2);
-            this.gbWelcomeScreen.Controls.Add(this.txtDes1);
+            this.gbWelcomeScreen.Controls.Add(this.txtDS4);
+            this.gbWelcomeScreen.Controls.Add(this.txtDS3);
+            this.gbWelcomeScreen.Controls.Add(this.txtDS2);
+            this.gbWelcomeScreen.Controls.Add(this.txtDS1);
             this.gbWelcomeScreen.Controls.Add(this.lbDestroyer);
             this.gbWelcomeScreen.Controls.Add(this.txtUB1);
             this.gbWelcomeScreen.Controls.Add(this.lbUboat);
-            this.gbWelcomeScreen.Controls.Add(this.txtTank2);
-            this.gbWelcomeScreen.Controls.Add(this.txtTank1);
+            this.gbWelcomeScreen.Controls.Add(this.txtTK2);
+            this.gbWelcomeScreen.Controls.Add(this.txtTK1);
             this.gbWelcomeScreen.Controls.Add(this.lbTanker);
-            this.gbWelcomeScreen.Controls.Add(this.txtCrs3);
-            this.gbWelcomeScreen.Controls.Add(this.txtCrs2);
-            this.gbWelcomeScreen.Controls.Add(this.txtCrs1);
+            this.gbWelcomeScreen.Controls.Add(this.txtCS3);
+            this.gbWelcomeScreen.Controls.Add(this.txtCS2);
+            this.gbWelcomeScreen.Controls.Add(this.txtCS1);
             this.gbWelcomeScreen.Controls.Add(this.lbCruiser);
             this.gbWelcomeScreen.Controls.Add(this.txtWS5);
             this.gbWelcomeScreen.Controls.Add(this.txtWS4);
             this.gbWelcomeScreen.Controls.Add(this.txtWS3);
             this.gbWelcomeScreen.Controls.Add(this.txtWS2);
-            this.gbWelcomeScreen.Controls.Add(this.txtWS1);
             this.gbWelcomeScreen.Controls.Add(this.lbWarship);
             this.gbWelcomeScreen.Controls.Add(this.label26);
             this.gbWelcomeScreen.Location = new System.Drawing.Point(58, 80);
@@ -172,6 +173,14 @@ namespace Battleship
             this.gbWelcomeScreen.Size = new System.Drawing.Size(816, 664);
             this.gbWelcomeScreen.TabIndex = 127;
             this.gbWelcomeScreen.TabStop = false;
+            // 
+            // txtWS1
+            // 
+            this.txtWS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWS1.Location = new System.Drawing.Point(200, 213);
+            this.txtWS1.Name = "txtWS1";
+            this.txtWS1.Size = new System.Drawing.Size(56, 38);
+            this.txtWS1.TabIndex = 39;
             // 
             // btnCreateShips
             // 
@@ -185,37 +194,37 @@ namespace Battleship
             this.btnCreateShips.UseVisualStyleBackColor = true;
             this.btnCreateShips.Click += new System.EventHandler(this.btnCreateShips_Click);
             // 
-            // txtDes4
+            // txtDS4
             // 
-            this.txtDes4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes4.Location = new System.Drawing.Point(405, 280);
-            this.txtDes4.Name = "txtDes4";
-            this.txtDes4.Size = new System.Drawing.Size(54, 38);
-            this.txtDes4.TabIndex = 36;
+            this.txtDS4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDS4.Location = new System.Drawing.Point(405, 280);
+            this.txtDS4.Name = "txtDS4";
+            this.txtDS4.Size = new System.Drawing.Size(54, 38);
+            this.txtDS4.TabIndex = 36;
             // 
-            // txtDes3
+            // txtDS3
             // 
-            this.txtDes3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes3.Location = new System.Drawing.Point(336, 280);
-            this.txtDes3.Name = "txtDes3";
-            this.txtDes3.Size = new System.Drawing.Size(54, 38);
-            this.txtDes3.TabIndex = 35;
+            this.txtDS3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDS3.Location = new System.Drawing.Point(336, 280);
+            this.txtDS3.Name = "txtDS3";
+            this.txtDS3.Size = new System.Drawing.Size(54, 38);
+            this.txtDS3.TabIndex = 35;
             // 
-            // txtDes2
+            // txtDS2
             // 
-            this.txtDes2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes2.Location = new System.Drawing.Point(267, 280);
-            this.txtDes2.Name = "txtDes2";
-            this.txtDes2.Size = new System.Drawing.Size(54, 38);
-            this.txtDes2.TabIndex = 34;
+            this.txtDS2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDS2.Location = new System.Drawing.Point(267, 280);
+            this.txtDS2.Name = "txtDS2";
+            this.txtDS2.Size = new System.Drawing.Size(54, 38);
+            this.txtDS2.TabIndex = 34;
             // 
-            // txtDes1
+            // txtDS1
             // 
-            this.txtDes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes1.Location = new System.Drawing.Point(200, 280);
-            this.txtDes1.Name = "txtDes1";
-            this.txtDes1.Size = new System.Drawing.Size(56, 38);
-            this.txtDes1.TabIndex = 33;
+            this.txtDS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDS1.Location = new System.Drawing.Point(200, 280);
+            this.txtDS1.Name = "txtDS1";
+            this.txtDS1.Size = new System.Drawing.Size(56, 38);
+            this.txtDS1.TabIndex = 33;
             // 
             // lbDestroyer
             // 
@@ -247,21 +256,21 @@ namespace Battleship
             this.lbUboat.TabIndex = 26;
             this.lbUboat.Text = "Uboat";
             // 
-            // txtTank2
+            // txtTK2
             // 
-            this.txtTank2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTank2.Location = new System.Drawing.Point(267, 409);
-            this.txtTank2.Name = "txtTank2";
-            this.txtTank2.Size = new System.Drawing.Size(54, 38);
-            this.txtTank2.TabIndex = 22;
+            this.txtTK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTK2.Location = new System.Drawing.Point(267, 409);
+            this.txtTK2.Name = "txtTK2";
+            this.txtTK2.Size = new System.Drawing.Size(54, 38);
+            this.txtTK2.TabIndex = 22;
             // 
-            // txtTank1
+            // txtTK1
             // 
-            this.txtTank1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTank1.Location = new System.Drawing.Point(200, 409);
-            this.txtTank1.Name = "txtTank1";
-            this.txtTank1.Size = new System.Drawing.Size(56, 38);
-            this.txtTank1.TabIndex = 21;
+            this.txtTK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTK1.Location = new System.Drawing.Point(200, 409);
+            this.txtTK1.Name = "txtTK1";
+            this.txtTK1.Size = new System.Drawing.Size(56, 38);
+            this.txtTK1.TabIndex = 21;
             // 
             // lbTanker
             // 
@@ -274,29 +283,29 @@ namespace Battleship
             this.lbTanker.TabIndex = 20;
             this.lbTanker.Text = "Tanker";
             // 
-            // txtCrs3
+            // txtCS3
             // 
-            this.txtCrs3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCrs3.Location = new System.Drawing.Point(336, 337);
-            this.txtCrs3.Name = "txtCrs3";
-            this.txtCrs3.Size = new System.Drawing.Size(54, 38);
-            this.txtCrs3.TabIndex = 17;
+            this.txtCS3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCS3.Location = new System.Drawing.Point(336, 337);
+            this.txtCS3.Name = "txtCS3";
+            this.txtCS3.Size = new System.Drawing.Size(54, 38);
+            this.txtCS3.TabIndex = 17;
             // 
-            // txtCrs2
+            // txtCS2
             // 
-            this.txtCrs2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCrs2.Location = new System.Drawing.Point(267, 337);
-            this.txtCrs2.Name = "txtCrs2";
-            this.txtCrs2.Size = new System.Drawing.Size(54, 38);
-            this.txtCrs2.TabIndex = 16;
+            this.txtCS2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCS2.Location = new System.Drawing.Point(267, 337);
+            this.txtCS2.Name = "txtCS2";
+            this.txtCS2.Size = new System.Drawing.Size(54, 38);
+            this.txtCS2.TabIndex = 16;
             // 
-            // txtCrs1
+            // txtCS1
             // 
-            this.txtCrs1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCrs1.Location = new System.Drawing.Point(200, 337);
-            this.txtCrs1.Name = "txtCrs1";
-            this.txtCrs1.Size = new System.Drawing.Size(56, 38);
-            this.txtCrs1.TabIndex = 15;
+            this.txtCS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCS1.Location = new System.Drawing.Point(200, 337);
+            this.txtCS1.Name = "txtCS1";
+            this.txtCS1.Size = new System.Drawing.Size(56, 38);
+            this.txtCS1.TabIndex = 15;
             // 
             // lbCruiser
             // 
@@ -340,15 +349,6 @@ namespace Battleship
             this.txtWS2.Name = "txtWS2";
             this.txtWS2.Size = new System.Drawing.Size(54, 38);
             this.txtWS2.TabIndex = 4;
-            // 
-            // txtWS1
-            // 
-            this.txtWS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWS1.Location = new System.Drawing.Point(200, 213);
-            this.txtWS1.Name = "txtWS1";
-            this.txtWS1.Size = new System.Drawing.Size(56, 38);
-            this.txtWS1.TabIndex = 3;
-            this.txtWS1.TextChanged += new System.EventHandler(this.txtWS1_TextChanged);
             // 
             // lbWarship
             // 
@@ -1308,7 +1308,7 @@ namespace Battleship
             // btnAudioToggle
             // 
             this.btnAudioToggle.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAudioToggle.Location = new System.Drawing.Point(12, 763);
+            this.btnAudioToggle.Location = new System.Drawing.Point(1723, 763);
             this.btnAudioToggle.Name = "btnAudioToggle";
             this.btnAudioToggle.Size = new System.Drawing.Size(104, 28);
             this.btnAudioToggle.TabIndex = 132;
@@ -1316,12 +1316,24 @@ namespace Battleship
             this.btnAudioToggle.UseVisualStyleBackColor = true;
             this.btnAudioToggle.Click += new System.EventHandler(this.btnAudioToggle_Click);
             // 
+            // btnRestartGame
+            // 
+            this.btnRestartGame.Font = new System.Drawing.Font("Rockwell Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestartGame.Location = new System.Drawing.Point(12, 763);
+            this.btnRestartGame.Name = "btnRestartGame";
+            this.btnRestartGame.Size = new System.Drawing.Size(104, 28);
+            this.btnRestartGame.TabIndex = 133;
+            this.btnRestartGame.Text = "Restart Game";
+            this.btnRestartGame.UseVisualStyleBackColor = true;
+            this.btnRestartGame.Click += new System.EventHandler(this.btnRestartGame_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1853, 803);
+            this.Controls.Add(this.btnRestartGame);
             this.Controls.Add(this.btnAudioToggle);
             this.Controls.Add(this.btnCloseApp);
             this.Controls.Add(this.groupBox4);
@@ -1331,6 +1343,7 @@ namespace Battleship
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.gbWelcomeScreen.ResumeLayout(false);
             this.gbWelcomeScreen.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1346,25 +1359,24 @@ namespace Battleship
 
         private System.Windows.Forms.GroupBox gbWelcomeScreen;
         private System.Windows.Forms.Button btnCreateShips;
-        private System.Windows.Forms.TextBox txtDes4;
-        private System.Windows.Forms.TextBox txtDes3;
-        private System.Windows.Forms.TextBox txtDes2;
-        private System.Windows.Forms.TextBox txtDes1;
+        private System.Windows.Forms.TextBox txtDS4;
+        private System.Windows.Forms.TextBox txtDS3;
+        private System.Windows.Forms.TextBox txtDS2;
+        private System.Windows.Forms.TextBox txtDS1;
         private System.Windows.Forms.Label lbDestroyer;
         private System.Windows.Forms.TextBox txtUB1;
         private System.Windows.Forms.Label lbUboat;
-        private System.Windows.Forms.TextBox txtTank2;
-        private System.Windows.Forms.TextBox txtTank1;
+        private System.Windows.Forms.TextBox txtTK2;
+        private System.Windows.Forms.TextBox txtTK1;
         private System.Windows.Forms.Label lbTanker;
-        private System.Windows.Forms.TextBox txtCrs3;
-        private System.Windows.Forms.TextBox txtCrs2;
-        private System.Windows.Forms.TextBox txtCrs1;
+        private System.Windows.Forms.TextBox txtCS3;
+        private System.Windows.Forms.TextBox txtCS2;
+        private System.Windows.Forms.TextBox txtCS1;
         private System.Windows.Forms.Label lbCruiser;
         private System.Windows.Forms.TextBox txtWS5;
         private System.Windows.Forms.TextBox txtWS4;
         private System.Windows.Forms.TextBox txtWS3;
         private System.Windows.Forms.TextBox txtWS2;
-        private System.Windows.Forms.TextBox txtWS1;
         private System.Windows.Forms.Label lbWarship;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label17;
@@ -1452,5 +1464,7 @@ namespace Battleship
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnCloseApp;
         private System.Windows.Forms.Button btnAudioToggle;
+        private System.Windows.Forms.TextBox txtWS1;
+        private System.Windows.Forms.Button btnRestartGame;
     }
 }

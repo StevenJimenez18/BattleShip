@@ -51,7 +51,7 @@ namespace BattleShipLibrary
         public static void GetEnemyLocations(EnemyShips enemyship, int size)
         {
             //---used to randomize variable choices---//
-            //Thread.Sleep(50);
+            
             //Random rand = new Random();
 
             //---Holds starting number---//
